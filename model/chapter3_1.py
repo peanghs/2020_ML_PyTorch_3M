@@ -1,7 +1,7 @@
 import torch
 
 
-class ClassChapter2_1(object):
+class ClassChapter3_1(object):
     def tensor_config(self):
         print('--기본 작업--')
         x = torch.tensor([[1, 2, 3], [4, 5, 6], [7, 8, 9]])

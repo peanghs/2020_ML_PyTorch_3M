@@ -6,7 +6,7 @@ import os
 import torch.nn.functional as F
 
 
-class ClassChapter2_3_prepare(object):
+class ClassChapter3_3_prepare(object):
     def prepare_nn(self):
         n_dim = 2
         x_train, y_train = make_blobs(n_samples=80, n_features=n_dim, centers=[[1,1],[-1,-1],[1,-1],[-1,1]], shuffle=True, cluster_std=0.3)
@@ -37,9 +37,9 @@ class ClassChapter2_3_prepare(object):
             else:
                 plt.plot(x_[0], x_[1], c + 'o' if y_ == 0 else c + '+')
 
-class ClassChapter2_3_train(torch.nn.Module):
+class ClassChapter3_3_train(torch.nn.Module):
     def __init__(self, input_size, hidden_size):
-        super(ClassChapter2_3_train, self).__init__()
+        super(ClassChapter3_3_train, self).__init__()
         self.input_size = input_size
         self.hidden_size = hidden_size
         self.linear_1 = torch.nn.Linear(self.input_size, self.hidden_size)
@@ -54,12 +54,12 @@ class ClassChapter2_3_train(torch.nn.Module):
         output = self.sigmoid(linear2)
         return output
 
-class ClassChapter2_3_eval(object):
+class ClassChapter3_3_eval(object):
     def __init__(self):
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     def process(self, args):
-        prepare = ClassChapter2_3_prepare()
+        prepare = ClassChapter3_3_prepare()
         x_train, x_test, y_train, y_test = prepare.prepare_nn()
         learning_rate = args.lr
         epochs = args.epochs
@@ -69,7 +69,7 @@ class ClassChapter2_3_eval(object):
         y_train = torch.FloatTensor(y_train).to(self.device)
         y_test = torch.FloatTensor(y_test).to(self.device)
 
-        model = ClassChapter2_3_train(2, 5).to(self.device)  # 변수를 cuda 로 준 경우 모델도 device 설정을 해줘야 함
+        model = ClassChapter3_3_train(2, 5).to(self.device)  # 변수를 cuda 로 준 경우 모델도 device 설정을 해줘야 함
         criterion = torch.nn.BCELoss()
         optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
 

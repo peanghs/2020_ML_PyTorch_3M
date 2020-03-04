@@ -3,7 +3,7 @@ import pickle
 import matplotlib.pyplot as plt
 
 
-class ClassChapter2_2(object):
+class ClassChapter3_2(object):
     def image_recovery(self):
         if __name__ == '__main__':
             broken_image = torch.FloatTensor(pickle.load(open('./image/broken_image_t.p', 'rb'), encoding='latin1'))
@@ -29,10 +29,11 @@ class ClassChapter2_2(object):
     def distance_loss(self, hypothesis, broken_image):
         return torch.dist(hypothesis, broken_image)
 
-    def distance_calc(self):
+    def distance_calc(self,args):
         random_tensor = torch.randn(10000, dtype=torch.float).cuda()
-        lr = 0.8
-        for i in range(0,20000):
+        lr = args.lr
+        epochs = args.epochs
+        for i in range(epochs):
             broken_image = self.image_recovery()
             random_tensor.requires_grad_(True)
             hypothesis = self.weird_function(x=random_tensor)
