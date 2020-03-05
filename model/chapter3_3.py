@@ -81,11 +81,13 @@ class ClassChapter3_3_eval(object):
             backup_path = './backup/'
         else:
             backup_path = './model/backup/'
-        backup_file = f'{backup_path}model.pt'
+        backup_file = f'{backup_path}c3_3_model.pt'
         if os.path.isfile(backup_file):
             model.load_state_dict(torch.load(backup_file))
             print(f'모델 로드 경로 :{backup_file}')
             print('모델 로드 완료')
+        else:
+            print('신규 학습 시작')
         try:
             if not os.path.isdir(backup_path):
                 os.makedirs(backup_path)

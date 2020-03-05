@@ -1,6 +1,6 @@
 import torch
 import matplotlib.pyplot as plt
-from model import chapter3_1, chapter3_2, chapter3_3
+from model import chapter3_1, chapter3_2, chapter3_3, chapter4_1
 
 class Starter(object):
     def __init__(self, args):
@@ -25,3 +25,6 @@ class Starter(object):
         if mode == 'chapter_3_3':
             play_chapter_3 = chapter3_3.ClassChapter3_3_eval()
             play_chapter_3.process(args)
+        if mode == 'chapter_4_1':
+            play_chapter_4 = chapter4_1.ClassChapter4_1()
+            play_chapter_4.starter(args)
