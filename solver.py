@@ -29,5 +29,5 @@ class Starter(object):
             play_chapter_4 = chapter4_1.ClassChapter4_1()
             play_chapter_4.starter(args)
         if mode == 'chapter_5_1':
-            play_chapter_5 = chapter5_1.ClassChapter5_1
+            play_chapter_5 = chapter5_1.ClassChapter5_1()
             play_chapter_5.starter(args)
